@@ -7,7 +7,7 @@
 
 ## Running Locally (no AWS required)
 
-All scripts have been updated so that S3 download/upload calls are commented out. 
+All notebooks have been updated so that S3 download/upload calls are commented out.
 
 ### Prerequisites
 
@@ -19,47 +19,47 @@ All scripts have been updated so that S3 download/upload calls are commented out
 2. **Get the dataset**  
    You need `cleaned/papers.parquet` in the root of the repo. Options:
    - Download it once manually from S3 if you have credentials, or
-   - Run `preprocess.py` locally (requires the 4 raw JSON files in `raw/`)
+   - Run `preprocess.ipynb` locally (requires the 4 raw JSON files in `raw/`)
 
-   To run preprocessing locally, place the four json files in a `raw/` folder, then:
+   To run preprocessing locally, place the four JSON files in a `raw/` folder, then open and run all cells in:
    ```
-   python src/preprocess.py
+   src/preprocess.ipynb
    ```
    This will produce `cleaned/papers.parquet` and skip all S3 uploads.
 
 ---
 
-### Running individual scripts
+### Running individual notebooks
 
-Run each script from the **root of the repo**:
+Open each notebook in Jupyter and run all cells, or execute from the **root of the repo** via:
 
 ```
-python src/eda.py
-python src/clustering.py
-python src/temporal_classification.py
-python src/citation_network.py
+jupyter nbconvert --to notebook --execute src/eda.ipynb --output src/eda.ipynb
+jupyter nbconvert --to notebook --execute src/clustering.ipynb --output src/clustering.ipynb
+jupyter nbconvert --to notebook --execute src/temporal_classification.ipynb --output src/temporal_classification.ipynb
+jupyter nbconvert --to notebook --execute src/citation_network.ipynb --output src/citation_network.ipynb
 ```
 
-`citation_network.py` requires `outputs/data/paper_clusters.parquet` — run `clustering.py` first.
+`citation_network.ipynb` requires `outputs/data/paper_clusters.parquet` — run `clustering.ipynb` first.
 
 Output figures are saved to `outputs/figures/<task>/` and data files to `outputs/data/`.
 
 ---
 
-### Running all scripts in order via runner.py
+### Running all notebooks in order via runner.ipynb
 
-`FilesToRun.txt` controls which scripts `runner.py` executes. Add entries in the order you want them to run:
+`FilesToRun.txt` controls which notebooks `runner.ipynb` executes. Add entries in the order you want them to run:
 
 ```
-preprocess.py | outputs/
-eda.py | outputs/
-clustering.py | outputs/
-temporal_classification.py | outputs/
-citation_network.py | outputs/
+preprocess.ipynb | outputs/
+eda.ipynb | outputs/
+clustering.ipynb | outputs/
+temporal_classification.ipynb | outputs/
+citation_network.ipynb | outputs/
 ```
 
-Then run:
+Then open and run all cells in `src/runner.ipynb`, or execute it via:
 ```
-python src/runner.py
+jupyter nbconvert --to notebook --execute src/runner.ipynb --output src/runner.ipynb
 ```
 ---
