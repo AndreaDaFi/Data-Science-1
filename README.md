@@ -31,13 +31,10 @@ All notebooks have been updated so that S3 download/upload calls are commented o
 
 ### Running individual notebooks
 
-Open each notebook in Jupyter and run all cells, or execute from the **root of the repo** via:
+Open each notebook in Jupyter and run all cells, or execute all at once from the **root of the repo** via:
 
 ```
-jupyter nbconvert --to notebook --execute src/eda.ipynb --output src/eda.ipynb
-jupyter nbconvert --to notebook --execute src/clustering.ipynb --output src/clustering.ipynb
-jupyter nbconvert --to notebook --execute src/temporal_classification.ipynb --output src/temporal_classification.ipynb
-jupyter nbconvert --to notebook --execute src/citation_network.ipynb --output src/citation_network.ipynb
+jupyter nbconvert --to notebook --execute --inplace src/eda.ipynb src/clustering.ipynb src/temporal_classification.ipynb src/citation_network.ipynb
 ```
 
 `citation_network.ipynb` requires `outputs/data/paper_clusters.parquet` — run `clustering.ipynb` first.
