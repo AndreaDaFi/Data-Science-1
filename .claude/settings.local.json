@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir /s /b)",
+      "Bash(python convert_to_ipynb.py)"
+    ]
+  }
+}
