@@ -8,3 +8,4 @@ networkx
 lightgbm
 scipy
 networkx
+ipykernel

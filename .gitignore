@@ -1,4 +1,5 @@
 # Ignore json files
 raw/*.json
-
+outputs/
 venv
+cleaned/*.parquet
