@@ -21,10 +21,6 @@ All notebooks have been updated so that S3 download/upload calls are commented o
    - Download it once manually from S3 if you have credentials, or
    - Run `preprocess.ipynb` locally (requires the 4 raw JSON files in `raw/`)
 
-   To run preprocessing locally, place the four JSON files in a `raw/` folder, then open and run all cells in:
-   ```
-   src/preprocess.ipynb
-   ```
    This will produce `cleaned/papers.parquet` and skip all S3 uploads.
 
 ---
@@ -38,22 +34,12 @@ Open each notebook in Jupyter and run all cells.
 
 Output figures are saved to `outputs/figures/<task>/` and data files to `outputs/data/`.
 
----
-
-### Running all notebooks in order via runner.ipynb
-
-`FilesToRun.txt` controls which notebooks `runner.ipynb` executes. Add entries in the order you want them to run:
-
+Run these files in order:
 ```
 preprocess.ipynb | outputs/
 eda.ipynb | outputs/
 clustering.ipynb | outputs/
 temporal_classification.ipynb | outputs/
 citation_network.ipynb | outputs/
-```
-
-Then open and run all cells in `src/runner.ipynb`, or execute it via:
-```
-jupyter nbconvert --to notebook --execute src/runner.ipynb --output src/runner.ipynb
 ```
 ---
